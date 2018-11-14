@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt,openany]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
+\usepackage{subfiles}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{longtable}
@@ -35,13 +36,6 @@ TODO: \textbf{#1}
 \setlength{\intextsep}{0pt}
 
 
-\newcommand{\katabox}[3]{
-	\p{#1}  
-\p{#2}
-\p{#3} 
-
-
-}
 
 \newcommand{\faulbox}[3]{
 
@@ -68,7 +62,32 @@ TODO: \textbf{#1}
 \includegraphics[width=1.8cm]{#1}}
 
 
-\newcommand{\odkaz}[2]{\textbf{#1}\textsuperscript{s.~\pageref{#2}}} 
+\newcommand{\odkaz}[2]{ \textbf{#1}\textsuperscript{s.~\pageref{#2}}}
+
+
+\newcommand{\katabox}[3]
+{tady má být katabox
+
+
+\begin{wrapfigure}{R}{5.3cm}
+
+\textbf{Téma} {#1} \\ 
+\textbf{Hráči} {#2} \\
+\textbf{Čas} {#3} \\
+\end{wrapfigure}
+
+}
+
+\newcommand{\btbinfo}[6]{
+
+\ifx Z#6 \textbf{#1} \else #1 \small{  (i)} \fi   & \pageref{#2} &  \small{#3} & \small{#4} & \small{#5}\hline
+}
+
+\newcommand{\faulinfo}[5]{
+#4 & #1 & #3 & #5 \\
+
+}
+
 
 %\footnote{\textbf{#2}, strana \pageref{#2} }
 
@@ -79,21 +98,23 @@ TODO: \textbf{#1}
 \titlespacing*{\section}{-5mm}{4mm}{3mm}
 
 \begin{document}
-\hyphenation{pros-tře-dí-mi dvo-ji-ce-mi}
+
+
+\hyphenation{pros-tře-dí-mi dvo-ji-ce-mi im-pro-li-ga}
 \begin{titlepage}
 \begin{center}
 
 % Upper part of the page. The '~' is needed because \\
 % only works if a paragraph has started.
-\includegraphics[width=0.15\textwidth]{./logo}~\\[2cm]
+\includegraphics[width=0.15\textwidth]{./logo}~\\[5cm]
 
 \textsc{\Large wiki.improliga.cz pod licencí Creative Commons Uveďte autora }\\[0.5cm]
 
 % Title
-
+%%%%\HRule %[0.4cm]
 { \huge \bfseries ImproWiki \\[0.4cm] }
 
-
+%%%%\HRule %\\[1.5cm]
 
 
 \vfill
@@ -110,7 +131,7 @@ TODO: \textbf{#1}
  
 \chapter{Úvod}\label{úvod}
 
-\input{uvod} 
+\subfile{uvod} 
 
 Oproti verzi dostupné na internetu zde chybí odkazy na videa a další internetové zdroje.
 
@@ -120,7 +141,7 @@ Tučně vysázená \odkaz{hesla}{úvod} říkají, na které straně se o daném
 
 Některé termíny ještě nejsou popsané, přihlašte se na http://wiki.improliga.cz/ a dopište je.
 
-\textbf{Varování:} Nikdo se ještě nenaučil improvizovat z knížky. Popis kategorií je určen spíše zkušeným hráčům pro připomenutí, než nováčkům na naučení se.  
+\textbf{Varování:} Nikdo se ještě nenaučil improvizovat z knížky. Popis kategorí je určen spíše zkušeným hráčům pro připomenutí, než nováčkům na naučení se.  
 
 \LaTeX{} sazbu připravuje  \odkaz{Václav Černý}{uživatel:vatoz}.
 
@@ -128,7 +149,7 @@ Chyby či náměty na vylepšení konverze hlaste na https://github.com/vatoz/im
 
 Případné faktické chyby a překlepy můžete opravit přímo na improwiki.
 \chapter{Zápas}
-\input{zapas}
+\subfile{zapas}
 
 
 
@@ -136,93 +157,96 @@ Případné faktické chyby a překlepy můžete opravit přímo na improwiki.
 
 
 \chapter{Postavy}
-\input{postavy}
+\subfile{postavy}
 
 
 \chapter{Zápasové kategorie}
 \label{zápasové kategorie}
 \label{:kategorie:zápasové kategorie}
-\input{kategorie_start}
-\input{kategoriez}
+\subfile{kategorie_start}
+\subfile{kategoriez}
 
 \chapter{Kategorie na improshow}\label{další kategorie}
 \label{:kategorie:kategorie na improshow}
 Tyto kategorie bývají hrány na improshow.
-%\input{kategoriei}
+\subfile{kategoriei}
 
 \chapter{Rozcvičky}\label{rozcvičky}
 \label{:kategorie:rozcvičky}
 
-\input{rozcvicky_start}
-%\input{rozcvicky}
+\subfile{rozcvicky_start}
+\subfile{rozcvicky}
 
 
 \chapter{Příprava zápasu}
-\input{priprava}
+\subfile{priprava}
+
+\chapter{Manuály}
+%%\subfile{manual}
 
 \chapter{Předzápasový trénink}
-\input{predzapasovy}
+\subfile{predzapasovy}
 
 \chapter{Cvičení}
-%\input{cviceni}
+\subfile{cviceni}
 
 \chapter{Fauly}\label{fauly}
 
 \label{:kategorie:fauly}
-\input{fauly_start} 
-%\input{fauly} 
+\subfile{fauly_start} 
+\subfile{fauly} 
 
 \chapter{Terminologie}\label{terminologie}
 \label{:kategorie:terminologie}
-%\input{terminologie}
+\subfile{terminologie}
 
 \chapter{Příběh}
-\input{pribeh_start}
-%\input{pribeh}
+\subfile{pribeh_start}
+\subfile{pribeh}
 
 
 \chapter{Longformy}\label{longformy}
-\input{longforma}
-\input{longformy}
+\subfile{longforma}
+\subfile{longformy}
 
 
 \chapter{Knihy}\label{knihy}
-%\input{books}
+\subfile{books}
 
 
 \chapter{Autoři}\label{autori}
-\input{authors}
+\subfile{authors}
 
 \chapter{Co se jinam nevešlo}\label{co se jinam nevešlo}
-%\input{zbytek}
+\subfile{zbytek}
 
 \chapter{Bonusy}
 \pagebreak
-\newcommand{\btbinfo}[6]{
 
-\ifx Z#6 \textbf{#1} \else #1 \small{  (i)} \fi   & \pageref{#2} &  \small{#3} & \small{#4} & \small{#5}\hline
-}
+\begin{longtable}{|p{4cm}|p{.4cm}|p{3.2cm}|p{3cm}|p{4.2cm}|}
+\hline 
+Název&str.&čas&hráči&téma \hline 
+\input{boxtable}
+
+\end{longtable}
+\pagebreak
 \renewcommand{\btbinfo}[6]{
-\ifx Z#6 \large{#1}   \fi
+\ifx Z#6 #1   \fi
 
 } 
-
-
-
-\begin{multicols}{2}
-
- \begin{tabular}[t]{|p{4cm}|p{4cm}    |}
+\begin{multicols}{3}
+ \begin{tabular}[t]{|p{25mm}|p{25mm}    |}
  \hline
  \multicolumn{2}{|c|}{ } \\
  \multicolumn{2}{|c|}{\large{Zápas}} \\
  \multicolumn{2}{|c|}{ } \\
- 
-  \hline
-Rozhodčí:  & Konferenciér: \\
- \hline
-\multicolumn{2}{|l|}{ Pomocňáci: }   \\ \hline
-Hudba: & Světla: \\ \hline \hline
-Organizace: & Grafika: \\ \hline \hline
+\hline
+\multicolumn{2}{|l|}{ Rozhodčí: }   \\ \hline
+\multicolumn{2}{|l|}{ Konferenciér: }   \\ \hline
+\multicolumn{2}{|l|}{ Hudba: }   \\ \hline
+\multicolumn{2}{|l|}{ Světla: }   \\ \hline
+\multicolumn{2}{|l|}{ Organizace: }   \\ \hline
+\multicolumn{2}{|l|}{ Grafika: }   \\ \hline
 Tým: &  Tým:\\ \hline
 1. \small{(cpt)}  & 1.\small{(cpt)} \\ \hline
 2.  & 2. \\ \hline
@@ -240,33 +264,28 @@ Body:  & Body: \\ \hline
 
   \fi
 }
-
+\hline
 
 \begin{multicols}{3}
 \large{\textbf{Veřejné rozcvičky}}
 
-\input{rozcvickyshort}
+\subfile{rozcvickyshort}
 \end {multicols}
-
+\hline
 
 \begin{multicols}{3}
 \large{\textbf{Kategorie na improshow}}
 
-\input{boxtable}
+\subfile{boxtable}
 \end {multicols}
 
 
 \pagebreak
-\newcommand{\faulinfo}[5]{
-#4 & #1 & #3 & #5 \\
-
-}
 
 \begin{tabular}[t]{|p{3cm}|p{4cm}|p{1cm}|p{6cm}    |}
-\input{faultable}
+\subfile{faultable}
 \end{tabular}
 \pagebreak
 \setcounter{tocdepth}{1}
 \tableofcontents
 \end{document}
-
